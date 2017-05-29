@@ -1,5 +1,7 @@
 lapis = require "lapis"
 
 class extends lapis.Application
-  "/": =>
-    "Welcome to Lapis #{require "lapis.version"}!"
+  layout: require "views.layout"
+
+  [index: "/"]: =>
+    "Welcome to Waifu.church! Runing on Lapis #{require "lapis.version"}!"
