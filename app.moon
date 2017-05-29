@@ -1,4 +1,5 @@
 lapis = require "lapis"
+magick = require "magick"
 
 class extends lapis.Application
   layout: require "views.layout"
