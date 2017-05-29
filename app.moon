@@ -9,26 +9,27 @@ class extends lapis.Application
 
   [index: "/"]: =>
     "Welcome to Waifu.church! Runing on Lapis #{require "lapis.version"}!"
+  [hori_image: "/:width[%d]/x"]: =>
+    if tonumber(@params.width) > 1920
+      status:422, layout:false, "Image too large!"
+    else
+      content_type: "image/png", layout:false, magick.thumb("http://moonscript.org/images/logo.png", "#{@params.width}x")
+  
+  [vert_image: "/x/:height[%d]"]: =>
+    if tonumber(@params.height) > 1080
+      status:422, layout:false, "Image too large!"
+    else
+      content_type: "image/png", layout: false, magick.thumb("https://moonscript.org/images/logo.png", "x#{@params.height}")
 
   [simple_image: "(/:name[a-zA-Z])/:width[%d](/:height[%d])"]: =>
     @params.width = tonumber @params.width
 
     unless @params.height
       @params.height = @params.width
-
-    if @params.width > 3500 or @params.height > 3500
-      status: 422, layout: false, "Image to large!"
+    if true
+      status:405, layout: false, "We haven't implemented this feature yet :>"
+    elseif @params.width > 3500 or @params.height > 3500
+      status: 422, layout: false, "Image too large!"
     else
-      "simple image: X: #{@params.width}, Y: #{@params.height}"
+      "simple image: name: #{@params.name}, width: #{@params.width}, height: #{@params.height}"
 
-  [labelled_image: "/:name[a-zA-Z]/:width[%d](/:height[%d])"]: =>
-    @params.width = tonumber @params.width
-
-    unless @params.height
-      @params.height = @params.width
-    
-    if @params.width > 3500 or @params.height > 3500
-      status: 422, layout: false, "Image to large!"
-    else
-      "labelled image: name: #{@params.name}, X: #{@params.width}, Y: #{@params.height}"
- 
