@@ -8,7 +8,13 @@ class extends lapis.Application
     status: 404, layout: false, "Not Found!"
 
   [index: "/"]: =>
-    "Welcome to Waifu.church! Runing on Lapis #{require "lapis.version"}!"
+    @html ->
+      div class: "main-cont", ->
+        h2, "waifu.church"
+        p, "The Ultimate place of Worship"
+      div class: "bg-cont"
+      div class: "waifu-cont"
+
   [hori_image: "/:width[%d]/x"]: =>
     if tonumber(@params.width) > 1920
       status:422, layout:false, "Image too large!"
