@@ -6,12 +6,24 @@
   "repository": "https://github.com/CatLover91/waifu.church.git",
   "author": "catlover91 <7215827+CatLover91@users.noreply.github.com>",
   "license": "MPL",
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "scripts": {
+    "build": "babel app -d dist",
+    "prepublishOnly": "npm run build",
+    "test": "standard | snazzy",
+    "start": "npm run test && npm run build && node dist/index.js"
+  },
   "dependencies": {
     "express": "^4.16.2",
     "gm": "^1.23.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3"
   }
