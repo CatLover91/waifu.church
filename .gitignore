@@ -1,4 +1,1 @@
-.tup
-*.lua
-logs/
-nginx.conf.compiled
+node_modules
