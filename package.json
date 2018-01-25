@@ -12,8 +12,8 @@
   "scripts": {
     "build": "babel app -d dist",
     "prepublishOnly": "npm run build",
-    "test": "standard | snazzy",
-    "start": "npm run test && npm run build && node dist/index.js"
+    "test": "standard --verbose | snazzy",
+    "start": "npm run test && npm run build && babel-node dist/index.js"
   },
   "dependencies": {
     "express": "^4.16.2",

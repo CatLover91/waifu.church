@@ -11,7 +11,16 @@ This is a placeholder website designed to give you waifus _on demand_. Mainly th
 ## Running from source
 You need Nodejs, Yarn, and imagemagick installed
 
-Run `yarn` to install dependencies, then run the program (haven't decided on this process yet)
+Once those core dependencies are installed, install dependencies:
+
+```
+yarn
+```
+
+then run the server:
+```
+npm run start
+```
 
 ## Todo
 * style errthang

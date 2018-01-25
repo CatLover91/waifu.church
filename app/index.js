@@ -1,6 +1,7 @@
 import express from 'express'
 import gm from 'gm'
 import fs from 'fs'
+import path from 'path'
 
 const srcDir = '/waifus'
 // const outDir = '/out'
@@ -21,21 +22,8 @@ function getUrl (req) {
   return url
 }
 
-app.configure(() => {
-  app.use(express.static(__dirname + '/assets'))
-  // app.use(express.favicon())
-  app.use(app.router)
-
-  // 404 page
-  app.use((req, res) => {
-    res.status('404').render('404', {url: getUrl(req)})
-  })
-
-  // 500 page
-  app.use((err, req, res) => {
-    res.status(err.status || 500).render('500', {error: err})
-  })
-})
+app.use(express.static(path.join(__dirname, '/assets')))
+// app.use(express.favicon())
 
 // root index
 app.get('/', (req, res) => {
@@ -64,6 +52,16 @@ app.get('/:width/:height/:format?', (req, res) => {
   }).on('end', (chunk) => {
     res.write(chunk)
   })
+})
+
+// 404 page
+app.use((req, res) => {
+  res.status('404').render('404', {url: getUrl(req)})
+})
+
+// 500 page
+app.use((err, req, res) => {
+  res.status(err.status || 500).render('500', {error: err})
 })
 
 app.listen(8080, () => {
