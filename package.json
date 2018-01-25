@@ -10,7 +10,7 @@
     "parser": "babel-eslint"
   },
   "scripts": {
-    "build": "babel app -d dist",
+    "build": "babel src -d dist",
     "prepublishOnly": "npm run build",
     "test": "standard --verbose | snazzy",
     "start": "npm run test && npm run build && babel-node dist/index.js"

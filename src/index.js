@@ -22,7 +22,7 @@ function getUrl (req) {
   return url
 }
 
-app.use(express.static(path.join(__dirname, '/assets')))
+app.use(express.static(path.join(__dirname, '/static')))
 // app.use(express.favicon())
 
 // root index
